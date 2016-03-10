@@ -33,3 +33,5 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - tar -xvf tomcat.tar.gz --strip-components=1 
     - rm bin/*.bat 
     - rm tomcat.tar.gz*
+  Start:
+    - $CATALINA_HOME/bin/catalina.sh run
