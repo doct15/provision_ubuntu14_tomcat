@@ -26,7 +26,6 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
       DCFD35E0BF8CA7344752DE8B6FB21E8933C60243 
       F3A04C595DB5B6A5F1ECA43E3B7BBB100D811BBE 
       F7DA48BB64BCB84ECBA7EE6935CD23C10D498E23
-    -
     - set -x 
     - curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz 
     - curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc 
