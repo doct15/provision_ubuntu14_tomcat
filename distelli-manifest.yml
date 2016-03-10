@@ -1,7 +1,7 @@
 bmcgeheeswati/provision_ubuntu14_tomcat:
   Env:
     - CATALINA_HOME: "/usr/local/tomcat"
-    - JAVA_HOME: "/usr/lib/jvm/jre"
+    - JAVA_HOME: "/usr/lib/jvm/java-7-oracle"
     - PATH: "$CATALINA_HOME/bin:$JAVA_HOME/bin:$PATH"
     - TOMCAT_MAJOR: "8"
     - TOMCAT_VERSION: "8.0.32"
@@ -33,7 +33,7 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - sudo tar -xvf tomcat.tar.gz --strip-components=1 
     - sudo rm bin/*.bat 
     - sudo rm tomcat.tar.gz*
-    - echo "$JAVA_HOME"
+    - echo "JAVA_HOME $JAVA_HOME"
     - "$JAVA_HOME/bin/java -showversion"
   Exec:
     - sudo $CATALINA_HOME/bin/catalina.sh run
