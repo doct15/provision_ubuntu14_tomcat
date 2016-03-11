@@ -23,7 +23,9 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - sudo $CATALINA_HOME/bin/catalina.sh start
   
   PreRestart:
+    - echo "PreRestart"
     - sudo $CATALINA_HOME/bin/catalina.sh stop
+    - sleep 10
   
   PreTerminate:
     - sudo $CATALINA_HOME/bin/catalina.sh stop
