@@ -17,7 +17,7 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - sudo tar -xvf tomcat.tar.gz --strip-components=1 
     - sudo rm bin/*.bat 
     - sudo rm tomcat.tar.gz*
-  Start:
+  Exec:
     - sudo $CATALINA_HOME/bin/catalina.sh run
   PostInstall:
     - publicip=$(curl -s ident.me)
