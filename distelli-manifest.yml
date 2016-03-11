@@ -6,7 +6,6 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - TOMCAT_MAJOR: "8"
     - TOMCAT_VERSION: "8.0.32"
     - TOMCAT_TGZ_URL: "https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz"
-
   Build:
     - echo "Nothing to Build"
   PreInstall:
@@ -17,8 +16,17 @@ bmcgeheeswati/provision_ubuntu14_tomcat:
     - sudo tar -xvf tomcat.tar.gz --strip-components=1 
     - sudo rm bin/*.bat 
     - sudo rm tomcat.tar.gz*
-  Exec:
-    - sudo $CATALINA_HOME/bin/catalina.sh run
   PostInstall:
     - publicip=$(curl -s ident.me)
     - echo "Public IP $publicip"
+  Start:
+    - sudo $CATALINA_HOME/bin/catalina.sh start
+  
+  PreRestart:
+    - sudo $CATALINA_HOME/bin/catalina.sh stop
+  
+  PreTerminate:
+    - sudo $CATALINA_HOME/bin/catalina.sh stop
+  PostTerminate:
+    #- WARNING rm -rf is dangerous. Make sure $CATALINA_HOME is set above.
+    - sudo rm -rf $CATALINA_HOME
